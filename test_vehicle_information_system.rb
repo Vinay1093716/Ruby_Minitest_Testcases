@@ -27,9 +27,7 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
+    assert_output(expected_output) { @vehicle.vehicle_information }
   end
 
   def test_invalid_input_data
@@ -50,10 +48,8 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
- 	end
+    assert_output(expected_output) { @vehicle.vehicle_information }
+  end
 
 	def test_search_vehicles_by_model
     @vehicle = MyVehicle.new
@@ -69,9 +65,7 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
 		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
+    assert_output(expected_output) { @vehicle.vehicle_information }
 	end
 
 	def test_display_vehicles_by_category
@@ -88,9 +82,7 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
+    assert_output(expected_output) { @vehicle.vehicle_information }
 	end
 
 	def test_display_vehicle_details
@@ -114,9 +106,7 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
 		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
+    assert_output(expected_output) { @vehicle.vehicle_information }
 	end
 
 	def test_wrong_choice_selection
@@ -132,9 +122,7 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
 		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
+    assert_output(expected_output) { @vehicle.vehicle_information }
 	end
 
 	def test_for_no_vehicles_found_with_the_model
@@ -151,9 +139,7 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
 		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
+    assert_output(expected_output) { @vehicle.vehicle_information }
 	end
 
 	def test_for_no_vehicles_found_with_the_category
@@ -170,8 +156,6 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
 		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
+    assert_output(expected_output) { @vehicle.vehicle_information }
 	end
 end
