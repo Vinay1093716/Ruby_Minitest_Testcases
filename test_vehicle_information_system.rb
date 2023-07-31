@@ -80,7 +80,6 @@ class TestMyVehicle < Minitest::Test
     $stdin = StringIO.new(user_input)
     assert_output(expected_output) { MyVehicle.new.vehicle_information }
 	end
-
   def test_display_vehicle_details
   	user_input = "4\nToyota\nCamry\n2022\nN\n"
 		expected_output =<<~OUTPUT
