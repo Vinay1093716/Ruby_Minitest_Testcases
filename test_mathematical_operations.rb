@@ -5,9 +5,8 @@ require_relative 'task_mathematical_operations.rb'
 class TestOperation < Minitest::Test
 
   def test_addition_operation
-    @operation = Operation.new
     user_input = "5\n10\n+\nN\n"
-    expected_output =<<~OUTPUT
+    expected_result =<<~OUTPUT
     Welcome to the Mathematical Operations Program!
     Enter the First Number\nEnter the Second Number
     Enter the operator
@@ -16,15 +15,12 @@ class TestOperation < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @operation.arithmetic_operation
-    end
+    assert_output(expected_result) { Operation.new.arithmetic_operation }
   end
 
   def test_subtraction_operation
-    @operation = Operation.new
     user_input = "9\n6\n-\nN\n"
-    expected_output =<<~OUTPUT
+    expected_result =<<~OUTPUT
     Welcome to the Mathematical Operations Program!
     Enter the First Number
     Enter the Second Number
@@ -34,15 +30,12 @@ class TestOperation < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @operation.arithmetic_operation
-    end
+    assert_output(expected_result) { Operation.new.arithmetic_operation }
   end
 
   def test_multiplication_operation
-    @operation = Operation.new
     user_input = "9\n13\n*\nN\n"
-    expected_output =<<~OUTPUT 
+    expected_result =<<~OUTPUT 
     Welcome to the Mathematical Operations Program!
     Enter the First Number
     Enter the Second Number
@@ -52,15 +45,12 @@ class TestOperation < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @operation.arithmetic_operation
-    end
+    assert_output(expected_result) { Operation.new.arithmetic_operation }
   end
 
   def test_division_operation
-    @operation = Operation.new
     user_input = "10\n5\n/\nN\n"
-    expected_output =<<~OUTPUT
+    expected_result =<<~OUTPUT
     Welcome to the Mathematical Operations Program!
     Enter the First Number
     Enter the Second Number
@@ -70,15 +60,12 @@ class TestOperation < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @operation.arithmetic_operation
-    end
+    assert_output(expected_result) { Operation.new.arithmetic_operation }
   end
 
   def test_division_operation_with_second_number_zero
-    @operation = Operation.new
     user_input = "5\n0\n/\nN\n"
-    expected_output =<<~OUTPUT
+    expected_result =<<~OUTPUT
     Welcome to the Mathematical Operations Program!
     Enter the First Number
     Enter the Second Number
@@ -88,15 +75,12 @@ class TestOperation < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @operation.arithmetic_operation
-    end
+    assert_output(expected_result) { Operation.new.arithmetic_operation }
   end
 
   def test_with_numbers_taken_as_strings
-    @operation = Operation.new
     user_input = "abcd\nefgh\n+\nN\n"
-    expected_output =<<~OUTPUT
+    expected_result =<<~OUTPUT
     Welcome to the Mathematical Operations Program!
     Enter the First Number
     Enter the Second Number
@@ -106,15 +90,12 @@ class TestOperation < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @operation.arithmetic_operation
-    end
+    assert_output(expected_result) { Operation.new.arithmetic_operation }
   end
 
   def test_for_termination_of_infinite_loop
-    @operation = Operation.new
     user_input = "8\n9\n*\nN\n"
-    expected_output =<<~OUTPUT
+    expected_result =<<~OUTPUT
     Welcome to the Mathematical Operations Program!
     Enter the First Number
     Enter the Second Number
@@ -124,15 +105,12 @@ class TestOperation < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @operation.arithmetic_operation
-    end
+    assert_output(expected_result) { Operation.new.arithmetic_operation }
   end
 
   def test_for_wrong_operator_selection
-    @operation = Operation.new
     user_input = "100\n769\n%\nN\n"
-    expected_output =<<~OUTPUT
+    expected_result =<<~OUTPUT
     Welcome to the Mathematical Operations Program!
     Enter the First Number
     Enter the Second Number
@@ -142,8 +120,6 @@ class TestOperation < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @operation.arithmetic_operation
-    end
+    assert_output(expected_result) { Operation.new.arithmetic_operation }
   end
 end
