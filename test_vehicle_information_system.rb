@@ -4,10 +4,9 @@ require_relative 'task_vehicle_information_system.rb'
 
 class TestMyVehicle < Minitest::Test
 
-	def test_add_vehicle_successful
-    @vehicle = MyVehicle.new
-		user_input = "1\nToyota\nCamry\n2022\nCars\nSedan\nN\n"
-		expected_output =<<~OUTPUT
+  def test_add_vehicle
+    user_input = "1\nToyota\nCamry\n2022\nCars\nSedan\nN\n"
+    expected_output =<<~OUTPUT
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -27,15 +26,12 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
+    assert_output(expected_output) { MyVehicle.new.vehicle_information }
   end
 
   def test_invalid_input_data
-    @vehicle = MyVehicle.new
- 		user_input = "1\nHonda\nCamry\n1700\nCycles\n Sedan\nN\n"
- 		expected_output =<<~OUTPUT
+    user_input = "1\nHonda\nCamry\n1700\nCycles\nSedan\nN\n"
+    expected_output =<<~OUTPUT
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -50,15 +46,28 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
- 	end
+    assert_output(expected_output) { MyVehicle.new.vehicle_information }
+  end
 
-	def test_search_vehicles_by_model
-    @vehicle = MyVehicle.new
-		user_input = "2\nCamry\nN\n"
-		expected_output =<<~OUTPUT
+  def test_add_and_search_vehicles_by_model
+    user_input = "1\nToyota\nCamry\n2022\nCars\nSedan\nY\n2\nCamry\nN\n"
+    expected_output =<<~OUTPUT
+    Enter 1 for adding vehicle
+    Enter 2 for searching vehicle by model
+    Enter 3 for displaying vehicles by category
+    Enter 4 for displaying vehicle details
+    Enter vehicle make:
+    enter Vehicle model:
+    enter manufacturing year:
+    enter vehicle category:
+    enter vehicle type:
+    Vehicle added successfully.
+    Car Make: Toyota
+    Car Model: Camry
+    Year: 2022
+    Vehicle Category: Cars
+    Vehicle Type: Sedan
+    If you want to continue press Y or else press N
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -68,16 +77,29 @@ class TestMyVehicle < Minitest::Test
     If you want to continue press Y or else press N
     Exiting the program. Goodbye!
     OUTPUT
-		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
-	end
+    $stdin = StringIO.new(user_input)
+    assert_output(expected_output) { MyVehicle.new.vehicle_information }
+  end
 
-	def test_display_vehicles_by_category
-    @vehicle = MyVehicle.new
-		user_input = "3\nCars\nN\n"
-		expected_output =<<~OUTPUT
+  def test_add_and_display_vehicles_by_category
+    user_input = "1\nToyota\nCamry\n2022\nCars\nSedan\nY\n3\nCars\nN\n"
+    expected_output =<<~OUTPUT
+    Enter 1 for adding vehicle
+    Enter 2 for searching vehicle by model
+    Enter 3 for displaying vehicles by category
+    Enter 4 for displaying vehicle details
+    Enter vehicle make:
+    enter Vehicle model:
+    enter manufacturing year:
+    enter vehicle category:
+    enter vehicle type:
+    Vehicle added successfully.
+    Car Make: Toyota
+    Car Model: Camry
+    Year: 2022
+    Vehicle Category: Cars
+    Vehicle Type: Sedan
+    If you want to continue press Y or else press N
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -88,15 +110,28 @@ class TestMyVehicle < Minitest::Test
     Exiting the program. Goodbye!
     OUTPUT
     $stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
-	end
+    assert_output(expected_output) { MyVehicle.new.vehicle_information }
+  end
 
-	def test_display_vehicle_details
-    @vehicle = MyVehicle.new
-  	user_input = "4\nToyota\nCamry\n2022\nN\n"
-		expected_output =<<~OUTPUT
+  def test_add_and_display_vehicle_details
+    user_input = "1\nToyota\nCamry\n2022\nCars\nSedan\nY\n4\nToyota\nCamry\n2022\nN\n"
+    expected_output =<<~OUTPUT
+    Enter 1 for adding vehicle
+    Enter 2 for searching vehicle by model
+    Enter 3 for displaying vehicles by category
+    Enter 4 for displaying vehicle details
+    Enter vehicle make:
+    enter Vehicle model:
+    enter manufacturing year:
+    enter vehicle category:
+    enter vehicle type:
+    Vehicle added successfully.
+    Car Make: Toyota
+    Car Model: Camry
+    Year: 2022
+    Vehicle Category: Cars
+    Vehicle Type: Sedan
+    If you want to continue press Y or else press N
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -113,16 +148,13 @@ class TestMyVehicle < Minitest::Test
     If you want to continue press Y or else press N
     Exiting the program. Goodbye!
     OUTPUT
-		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
-	end
+    $stdin = StringIO.new(user_input)
+    assert_output(expected_output) { MyVehicle.new.vehicle_information }
+  end
 
-	def test_wrong_choice_selection
-    @vehicle = MyVehicle.new
-		user_input = "5\nN\n"
-		expected_output =<<~OUTPUT
+  def test_wrong_choice_selection
+    user_input = "5\nN\n"
+    expected_output =<<~OUTPUT
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -131,16 +163,13 @@ class TestMyVehicle < Minitest::Test
     If you want to continue press Y or else press N
     Exiting the program. Goodbye!
     OUTPUT
-		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
-	end
+    $stdin = StringIO.new(user_input)
+    assert_output(expected_output) { MyVehicle.new.vehicle_information }
+  end
 
-	def test_for_no_vehicles_found_with_the_model
-    @vehicle = MyVehicle.new
-		user_input = "2\nAcconto\nN\n"
-		expected_output =<<~OUTPUT
+  def test_for_no_vehicles_found_with_the_model
+    user_input = "2\nAcconto\nN\n"
+    expected_output =<<~OUTPUT
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -150,16 +179,13 @@ class TestMyVehicle < Minitest::Test
     If you want to continue press Y or else press N
     Exiting the program. Goodbye!
     OUTPUT
-		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
-	end
+    $stdin = StringIO.new(user_input)
+    assert_output(expected_output) { MyVehicle.new.vehicle_information }
+  end
 
-	def test_for_no_vehicles_found_with_the_category
-    @vehicle = MyVehicle.new
-		user_input = "3\nCycle\nN\n"
-		expected_output =<<~OUTPUT
+  def test_for_no_vehicles_found_with_the_category
+    user_input = "3\nCycle\nN\n"
+    expected_output =<<~OUTPUT
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -169,9 +195,7 @@ class TestMyVehicle < Minitest::Test
     If you want to continue press Y or else press N
     Exiting the program. Goodbye!
     OUTPUT
-		$stdin = StringIO.new(user_input)
-    assert_output(expected_output) do
-      @vehicle.vehicle_information
-    end
-	end
+    $stdin = StringIO.new(user_input)
+    assert_output(expected_output) { MyVehicle.new.vehicle_information }
+  end
 end

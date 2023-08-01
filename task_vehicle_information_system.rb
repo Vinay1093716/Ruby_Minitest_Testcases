@@ -1,23 +1,18 @@
 module VehicleCategory
-  $vehicle_objects = []
   VEHICLE_CATEGORIES = { "Cars" => ["Sedan", "SUV", "CUV", "Hatch Back"], "motorcycles" => ["Bike", "Scooter"], "trucks" => ["lorry", "DCM"] }
   
   def check_vehicle_input?(category, type)
     return false unless VEHICLE_CATEGORIES.keys.include?(category)
-    
     VEHICLE_CATEGORIES[category].include?(type)
   end
 
   def check_valid_year?(year)
     year.between?(1886, 2030)
   end
-
 end
 
 class Vehicle
-
   include VehicleCategory
-
   attr_accessor :make, :model, :year, :category, :type
 
   def add_vehicle(vehicle_make, vehicle_model, vehicle_year, vehicle_category, vehicle_type)
@@ -41,41 +36,44 @@ class Vehicle
   def search_vehicle_by_model(vehicle_objects, model)
     flag = 0
     vehicle_objects.each do |itr|
-      if(itr.model == model)
+      if itr.model == model
         flag = 1
         puts "#{itr.make}, #{itr.model}, #{itr.year}, #{itr.category}, #{itr.type}"
-      end
-      if(flag == 0)
-        puts "No such model vehicles is found"
       end
     end
-  end
- 
-  def display_vehicles_by_category(vehicle_objects, category)
-    flag = 0
-    vehicle_objects.each do |itr|
-      if(itr.category == category)
-        flag = 1
-        puts "#{itr.make}, #{itr.model}, #{itr.year}, #{itr.category}, #{itr.type}"
-      end
-      if(flag == 0)
-        puts "No such category vehicles is found"
-      end
+    if flag == 0
+      puts "No such model vehicles is found"
     end
   end
 
-  def display_vehicle_details(vehicle_objects,make,model,year)
+  def display_vehicles_by_category(vehicle_objects, category)
+    flag = 0
+    vehicle_objects.each do |itr|
+      if itr.category == category
+        flag = 1
+        puts "#{itr.make}, #{itr.model}, #{itr.year}, #{itr.category}, #{itr.type}"
+      end
+    end
+    if flag == 0
+      puts "No such category vehicles is found"
+    end
+  end
+
+  def display_vehicle_details(vehicle_objects, make, model, year)
+    flag = 0
     puts "Vehicle details:"
     vehicle_objects.each do |itr|
-      if(itr.make == make && itr.model == model && itr.year == year)
+      if itr.make == make && itr.model == model && itr.year == year
+        flag = 1
         puts "#{itr.make}"
         puts "#{itr.model}"
         puts "#{itr.year}"
         puts "#{itr.category}"
         puts "#{itr.type}"
-      else
-        puts "No such vehicle is found"
       end
+    end
+    if flag == 0
+      puts "No such vehicles is found"
     end
   end
 end
@@ -83,7 +81,7 @@ end
 class MyVehicle
 
   def vehicle_information
-
+    vehicle_objects = []
     while (true)
       puts "Enter 1 for adding vehicle"
       puts "Enter 2 for searching vehicle by model"
@@ -108,17 +106,17 @@ class MyVehicle
           s5 = gets
           s5 = s5.chomp unless s5.nil?
           obj.add_vehicle(s1,s2,s3,s4,s5)
-          $vehicle_objects.push(obj)
+          vehicle_objects.push(obj)
         when 2
           puts "enter the vehicle model:"
           model = gets
           model = model.chomp unless model.nil?
-          obj.search_vehicle_by_model($vehicle_objects,model)
+          obj.search_vehicle_by_model(vehicle_objects, model)
         when 3
           puts "enter the vehicle category:"
           category = gets
           category = category.chomp unless category.nil?
-          obj.display_vehicles_by_category($vehicle_objects,category)
+          obj.display_vehicles_by_category(vehicle_objects, category)
         when 4
           puts "enter the vehicle make:"
           make = gets
@@ -128,7 +126,7 @@ class MyVehicle
           model = model.chomp unless model.nil?
           puts "enter the year:"
           year = gets.to_i
-          obj.display_vehicle_details($vehicle_objects,make,model,year)
+          obj.display_vehicle_details(vehicle_objects, make, model, year)
         else
           puts "You entered wrong choice"
         end
