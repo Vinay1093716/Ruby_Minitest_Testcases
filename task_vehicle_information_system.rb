@@ -1,5 +1,4 @@
 module VehicleCategory
-  $vehicle_objects = []
   VEHICLE_CATEGORIES = { "Cars" => ["Sedan", "SUV", "CUV", "Hatch Back"], "motorcycles" => ["Bike", "Scooter"], "trucks" => ["lorry", "DCM"] }
   
   def check_vehicle_input?(category, type)
@@ -82,6 +81,7 @@ end
 class MyVehicle
 
   def vehicle_information
+    vehicle_objects = []
     while (true)
       puts "Enter 1 for adding vehicle"
       puts "Enter 2 for searching vehicle by model"
@@ -106,17 +106,17 @@ class MyVehicle
           s5 = gets
           s5 = s5.chomp unless s5.nil?
           obj.add_vehicle(s1,s2,s3,s4,s5)
-          $vehicle_objects.push(obj)
+          vehicle_objects.push(obj)
         when 2
           puts "enter the vehicle model:"
           model = gets
           model = model.chomp unless model.nil?
-          obj.search_vehicle_by_model($vehicle_objects, model)
+          obj.search_vehicle_by_model(vehicle_objects, model)
         when 3
           puts "enter the vehicle category:"
           category = gets
           category = category.chomp unless category.nil?
-          obj.display_vehicles_by_category($vehicle_objects, category)
+          obj.display_vehicles_by_category(vehicle_objects, category)
         when 4
           puts "enter the vehicle make:"
           make = gets
@@ -126,7 +126,7 @@ class MyVehicle
           model = model.chomp unless model.nil?
           puts "enter the year:"
           year = gets.to_i
-          obj.display_vehicle_details($vehicle_objects, make, model, year)
+          obj.display_vehicle_details(vehicle_objects, make, model, year)
         else
           puts "You entered wrong choice"
         end

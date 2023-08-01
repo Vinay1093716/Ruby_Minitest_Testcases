@@ -49,9 +49,25 @@ class TestMyVehicle < Minitest::Test
     assert_output(expected_output) { MyVehicle.new.vehicle_information }
   end
 
-   def test_search_vehicles_by_model
-    user_input = "2\nCamry\nN\n"
+   def test_add_and_search_vehicles_by_model
+    user_input = "1\nToyota\nCamry\n2022\nCars\nSedan\nY\n2\nCamry\nN\n"
     expected_output =<<~OUTPUT
+    Enter 1 for adding vehicle
+    Enter 2 for searching vehicle by model
+    Enter 3 for displaying vehicles by category
+    Enter 4 for displaying vehicle details
+    Enter vehicle make:
+    enter Vehicle model:
+    enter manufacturing year:
+    enter vehicle category:
+    enter vehicle type:
+    Vehicle added successfully.
+    Car Make: Toyota
+    Car Model: Camry
+    Year: 2022
+    Vehicle Category: Cars
+    Vehicle Type: Sedan
+    If you want to continue press Y or else press N
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -65,9 +81,25 @@ class TestMyVehicle < Minitest::Test
     assert_output(expected_output) { MyVehicle.new.vehicle_information }
   end
 
-  def test_display_vehicles_by_category
-    user_input = "3\nCars\nN\n"
+  def test_add_and_display_vehicles_by_category
+    user_input = "1\nToyota\nCamry\n2022\nCars\nSedan\nY\n3\nCars\nN\n"
     expected_output =<<~OUTPUT
+    Enter 1 for adding vehicle
+    Enter 2 for searching vehicle by model
+    Enter 3 for displaying vehicles by category
+    Enter 4 for displaying vehicle details
+    Enter vehicle make:
+    enter Vehicle model:
+    enter manufacturing year:
+    enter vehicle category:
+    enter vehicle type:
+    Vehicle added successfully.
+    Car Make: Toyota
+    Car Model: Camry
+    Year: 2022
+    Vehicle Category: Cars
+    Vehicle Type: Sedan
+    If you want to continue press Y or else press N
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
@@ -81,9 +113,25 @@ class TestMyVehicle < Minitest::Test
     assert_output(expected_output) { MyVehicle.new.vehicle_information }
   end
 
-  def test_display_vehicle_details
-    user_input = "4\nToyota\nCamry\n2022\nN\n"
+  def test_add_and_display_vehicle_details
+    user_input = "1\nToyota\nCamry\n2022\nCars\nSedan\nY\n4\nToyota\nCamry\n2022\nN\n"
     expected_output =<<~OUTPUT
+    Enter 1 for adding vehicle
+    Enter 2 for searching vehicle by model
+    Enter 3 for displaying vehicles by category
+    Enter 4 for displaying vehicle details
+    Enter vehicle make:
+    enter Vehicle model:
+    enter manufacturing year:
+    enter vehicle category:
+    enter vehicle type:
+    Vehicle added successfully.
+    Car Make: Toyota
+    Car Model: Camry
+    Year: 2022
+    Vehicle Category: Cars
+    Vehicle Type: Sedan
+    If you want to continue press Y or else press N
     Enter 1 for adding vehicle
     Enter 2 for searching vehicle by model
     Enter 3 for displaying vehicles by category
