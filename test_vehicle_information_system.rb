@@ -49,7 +49,7 @@ class TestMyVehicle < Minitest::Test
     assert_output(expected_output) { MyVehicle.new.vehicle_information }
   end
 
-   def test_add_and_search_vehicles_by_model
+  def test_add_and_search_vehicles_by_model
     user_input = "1\nToyota\nCamry\n2022\nCars\nSedan\nY\n2\nCamry\nN\n"
     expected_output =<<~OUTPUT
     Enter 1 for adding vehicle
